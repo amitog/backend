@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Upload</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f9;
+      }
+
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      #preview {
+        margin-top: 20px;
+      }
+
+      /* Style for the clickable card */
+      .upload-card {
+        background-color: #f1f1f1;
+        border: 2px dashed #ccc;
+        padding: 20px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .upload-card:hover {
+        background-color: #e9e9e9;
+      }
+
+      #imageInput {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload Image</h1>
+
+      <!-- Card for triggering file input -->
+      <div class="upload-card" id="card">
+        <p>Click here to select an image</p>
+      </div>
+
+      <form
+        id="uploadForm"
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="file"
+          name="image"
+          id="imageInput"
+          accept="image/*"
+          required
+        />
+      </form>
+
+      <div id="preview" style="display: none">
+        <h2>Preview</h2>
+        <img id="imagePreview" src="" alt="Image Preview" width="300px" />
+        <br />
+        <button id="acceptBtn">Accept</button>
+        <button id="rejectBtn">Reject</button>
+      </div>
+    </div>
+
+    <script>
+      const imageInput = document.getElementById("imageInput");
+      const preview = document.getElementById("preview");
+      const imagePreview = document.getElementById("imagePreview");
+      const acceptBtn = document.getElementById("acceptBtn");
+      const rejectBtn = document.getElementById("rejectBtn");
+      const uploadForm = document.getElementById("uploadForm");
+      const card = document.getElementById("card");
+
+      // Trigger file input when card is clicked
+      card.addEventListener("click", () => {
+        imageInput.click();
+      });
+
+      // Display image preview when a file is selected
+      imageInput.addEventListener("change", () => {
+        const file = imageInput.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+          imagePreview.src = reader.result;
+          preview.style.display = "block";
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Submit form when the user accepts the image
+      acceptBtn.addEventListener("click", () => {
+        uploadForm.submit();
+      });
+
+      // Clear the file input and hide the preview when the user rejects the image
+      rejectBtn.addEventListener("click", () => {
+        imageInput.value = ""; // Clear file input
+        preview.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
