@@ -43,9 +43,9 @@ def sensor_data_update():
         sensor_data["humidity"] = data.get("humidity")
         sensor_data["soil_moisture"] = data.get("soil_moisture")
         
-        print(f"Temperature: {sensor_data['temperature']} °C")
-        print(f"Humidity: {sensor_data['humidity']} %")
-        print(f"Soil Moisture: {sensor_data['soil_moisture']}")
+        # print(f"Temperature: {sensor_data['temperature']} °C")
+        # print(f"Humidity: {sensor_data['humidity']} %")
+        # print(f"Soil Moisture: {sensor_data['soil_moisture']}")
         
         return jsonify({"status": "success", "message": "Sensor data received"}), 200
     except Exception as e:
