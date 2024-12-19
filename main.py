@@ -42,7 +42,7 @@ def upload_image():
 
         # Check if the file exists after saving
         if os.path.exists(filepath):
-            return f"File uploaded and saved successfully: {filename}"
+            return https://frontend-five-gamma-91.vercel.app/
         else:
             return "Error: File upload failed."
     else:
