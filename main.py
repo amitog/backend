@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, redirect
 import os
 
 app = Flask(__name__)
@@ -42,7 +42,7 @@ def upload_image():
 
         # Check if the file exists after saving
         if os.path.exists(filepath):
-            return "https://frontend-five-gamma-91.vercel.app/"
+            return redirect("https://frontend-five-gamma-91.vercel.app/")
         else:
             return "Error: File upload failed."
     else:
