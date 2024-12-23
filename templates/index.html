@@ -75,20 +75,10 @@
         <p>Click here to select an image</p>
       </div>
 
-      <form
-        id="uploadForm"
-        action="/upload"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <input
-          type="file"
-          name="image"
-          id="imageInput"
-          accept="image/*"
-          required
-        />
+      <form id="uploadForm" action="/upload_image" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="imageInput" accept="image/*" required />
       </form>
+      
 
       <div id="preview" style="display: none">
         <h2>Preview</h2>
