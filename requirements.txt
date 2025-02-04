@@ -17,3 +17,4 @@ statsmodels==0.14.4
 threadpoolctl==3.5.0
 tzdata==2025.1
 flask
+flask-cors
