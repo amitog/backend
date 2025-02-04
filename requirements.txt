@@ -10,7 +10,6 @@ pandas==2.2.3
 patsy==1.0.1
 pillow==11.1.0
 pyparsing==3.2.1
-pytz==2024.2
 pywin32==307
 scikit-learn==1.6.1
 scipy==1.13.1
